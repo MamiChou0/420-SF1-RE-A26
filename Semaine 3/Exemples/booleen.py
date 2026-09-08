@@ -38,7 +38,7 @@ print("Comparaison de texte")
 print("aubergine" < "poire")
 print("david" == "david")
 print("David" == "david")
-print("david" < "David")
+print("david" < "David")  # Les majuscules ont une valeur numérique inférieure aux minuscules
 print("david" < "davod")
 
 # Comparaison booléenne
