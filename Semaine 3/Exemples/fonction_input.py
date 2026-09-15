@@ -1,7 +1,7 @@
 # input() permet à l'utilisateur d'entrer une str
 # prend en paramètre un str de ce que l'on veut afficher / demander à l'utilisateur
 # retourne une str
-age = input("Quel est ton âge?")
+age = input("Quel est ton âge? ")
 print(age)
 print(type(age))
 

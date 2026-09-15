@@ -1,3 +1,5 @@
+# le mot-clé as permet de spécifié un alias; la prochaine ligne permet de préfixé avec rnd au lieu de random
+# on va faire l'appel avec rnd.randint() au lieu de random.randint()
 import random as rnd
 
 nombre_essais_max = 5
