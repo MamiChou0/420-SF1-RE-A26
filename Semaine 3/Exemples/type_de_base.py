@@ -14,11 +14,11 @@ str_multilignes = "Première ligne\nDeuxième ligne"
 print(str_multilignes)
 str_tab = "Prénom:\tPier Luc\tNom:\tDucharme"
 print(str_tab)
-caracteres_multilignes = "Ceci est une chaîne de \
-continuation de la chaîne"
+caracteres_multilignes = "Ceci est une chaîne \
+continuation de la même chaîne chaîne"
 print(caracteres_multilignes)
-char_multi_autre_facon = ("Ceci est une chaîne de "
-                          "continuation de la chaîne")
+char_multi_autre_facon = ("Ceci est une chaîne "
+                          "continuation de la même chaîne")
 print(char_multi_autre_facon)
 # Pour échapper (et afficher) le caractère d'échappement "\", on utilise "\\"
 char_echap = "Ceci est un backslash:\\"
