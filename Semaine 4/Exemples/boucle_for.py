@@ -1,5 +1,5 @@
 
-# range(10) génère une séquence de 0 à 9; range(fin non incluse)
+# range(10)  # génère une séquence de 0 à 9; range(fin non incluse)
 # for i in range(10):
 #     print(i)
 

@@ -1,4 +1,4 @@
-# il existe trois "versions" de la méthode built-in range(debut incluse, fin non-incluse, pas)
+# il existe trois "versions" de la méthode built-in range(debut inclus, fin non-incluse, pas)
 # Dans les faits, c'est la même fonction, mais avec des paramètres optionnels
 # Le "pas" est de combien la séquence incrémente (1, si non spécifié)
 # range(fin non incluse) génère une séquence de 0 à fin-1
@@ -26,4 +26,9 @@ print()
 for i in range(10):
     # pas obligé d'utilisé la variable i déclarée
     print("Exécuté")
+
+# La façon la plus élégante de faire une boucle for qui n'utilise pas la variable
+for _ in range(10):
+    print("Exécuté!")
+
     
