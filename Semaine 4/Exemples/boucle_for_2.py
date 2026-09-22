@@ -4,8 +4,8 @@
 # Dans ce cas-ci, une liste
 fruits = ["fraises", "framboises", "bleuets"]
 
-for fruit in fruits:
-    print(fruit)
+for f in fruits:
+    print(f)
 
 # Une séquence de nombre générée par range
 for i in range(1, 10):
@@ -17,5 +17,9 @@ phrase = "J'aime le python!"
 for caractere in phrase:
     print(caractere)
 
+# Les tuples sont aussi des séquences
+sequence_tuple = (0, 1, 2, 42, 54)
+for nbr in sequence_tuple:
+    print(nbr)
 
 

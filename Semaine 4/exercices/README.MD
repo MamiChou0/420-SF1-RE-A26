@@ -1,6 +1,6 @@
 # Exercices Semaine 4
 
-1) Écrivez un programme qui demande à l'utilisateur une largeur de hauteur de triangle à générer et afficher le triangle.
+1) Écrivez un programme qui demande à l'utilisateur une hauteur de triangle à générer et afficher le triangle.
     - par exemple, si la hauteur est 5, on devrait obtenir : 
 ```
 * 
