@@ -4,7 +4,7 @@ def saisie_personne():
     prenom = input("Prénom: ")
     ville = input("Ville: ")
     pays = input("Pays: ")
-
+    # cette fonction retourne 4 valeurs
     return nom, prenom, ville, pays
 
 
