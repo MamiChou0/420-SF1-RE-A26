@@ -1,0 +1,288 @@
+Index: test.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import csv\r\n\r\nwith open('Periodic Table of Elements.csv', 'r', encoding='utf8') as fichier_csv:\r\n    liste_elements = csv.DictReader(fichier_csv)\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/test.py b/test.py
+--- a/test.py	(revision b6a7f57a3b604da4ba41b2f485955986eb05b2de)
++++ b/test.py	(date 1795530218118)
+@@ -1,4 +1,3 @@
+ import csv
+ 
+-with open('Periodic Table of Elements.csv', 'r', encoding='utf8') as fichier_csv:
+-    liste_elements = csv.DictReader(fichier_csv)
++
+Index: Semaine 11/Exercices/ex_3_4.py
+===================================================================
+diff --git a/Semaine 11/Exercices/ex_3_4.py b/Semaine 11/Exercices/ex_3_4.py
+deleted file mode 100644
+--- a/Semaine 11/Exercices/ex_3_4.py	(revision b6a7f57a3b604da4ba41b2f485955986eb05b2de)
++++ /dev/null	(revision b6a7f57a3b604da4ba41b2f485955986eb05b2de)
+@@ -1,27 +0,0 @@
+-heros = {
+-    'nom': 'Aria',
+-    'classe': 'magicienne',
+-    'niveau': 1,
+-    'stats': {'force': 4, 'magie': 9, 'agilité': 6}
+-}
+-
+-
+-def afficher_personnage(personnage: dict) -> None:
+-    print(f"{personnage["nom"]}, {personnage["classe"]} (niveau {personnage["niveau"]})")
+-    stats: dict = personnage["stats"]
+-    for cle, valeur in stats.items():
+-        print(f"\t{cle} : {valeur}")
+-
+-
+-afficher_personnage(heros)
+-
+-
+-def monter_niveau(personnage: dict):
+-    personnage["niveau"] += 1
+-    stats = personnage["stats"]
+-    for stat in stats.keys():
+-        stats[stat] += 2
+-
+-
+-monter_niveau(heros)
+-afficher_personnage(heros)
+Index: Semaine 11/Exercices/ex_3_5.py
+===================================================================
+diff --git a/Semaine 11/Exercices/ex_3_5.py b/Semaine 11/Exercices/ex_3_5.py
+deleted file mode 100644
+--- a/Semaine 11/Exercices/ex_3_5.py	(revision b6a7f57a3b604da4ba41b2f485955986eb05b2de)
++++ /dev/null	(revision b6a7f57a3b604da4ba41b2f485955986eb05b2de)
+@@ -1,14 +0,0 @@
+-dict_fra_elfique = {"ami": "mellon", "lumière": "ithil", "magicien": "Istar", "salut": "aia", "premier": "inga"}
+-
+-phrase = input("Phrase : ")
+-liste_mots = phrase.split()
+-traduction = []
+-for mot in liste_mots:
+-    if mot in dict_fra_elfique:
+-        traduction.append(dict_fra_elfique[mot])
+-    else:
+-        traduction.append(f"[{mot}]")
+-
+-print(" ".join(traduction))
+-
+-
+Index: Semaine 11/Exercices/ex_1_5.py
+===================================================================
+diff --git a/Semaine 11/Exercices/ex_1_5.py b/Semaine 11/Exercices/ex_1_5.py
+deleted file mode 100644
+--- a/Semaine 11/Exercices/ex_1_5.py	(revision b6a7f57a3b604da4ba41b2f485955986eb05b2de)
++++ /dev/null	(revision b6a7f57a3b604da4ba41b2f485955986eb05b2de)
+@@ -1,6 +0,0 @@
+-import random
+-prenom = input("Prénom : ")
+-nom = input("Nom : ")
+-titre = ["le Redoutable", "le Badass", "le SuperHot"]
+-# découpage/slicing [debut : fin non incluse : pas]
+-print(f"Ton nom de dragon : {prenom[:3]}{nom[-3::1]} {random.choice(titre)}")
+Index: Semaine 11/Exercices/ex_3_1.py
+===================================================================
+diff --git a/Semaine 11/Exercices/ex_3_1.py b/Semaine 11/Exercices/ex_3_1.py
+deleted file mode 100644
+--- a/Semaine 11/Exercices/ex_3_1.py	(revision b6a7f57a3b604da4ba41b2f485955986eb05b2de)
++++ /dev/null	(revision b6a7f57a3b604da4ba41b2f485955986eb05b2de)
+@@ -1,9 +0,0 @@
+-bestiaire = {'gobelin': 10, 'troll': 50, 'dragon': 200}
+-print(bestiaire["troll"])
+-bestiaire["fantome"] = 30
+-# équivalent de bestiaire["dragon"] = bestiaire["dragon"] // 2
+-bestiaire["dragon"] //= 2
+-del bestiaire["gobelin"]
+-for monstre, pdv in bestiaire.items():
+-    print(f"{monstre} : {pdv}")
+-
+Index: Semaine 11/Exercices/ex_3_2.py
+===================================================================
+diff --git a/Semaine 11/Exercices/ex_3_2.py b/Semaine 11/Exercices/ex_3_2.py
+deleted file mode 100644
+--- a/Semaine 11/Exercices/ex_3_2.py	(revision b6a7f57a3b604da4ba41b2f485955986eb05b2de)
++++ /dev/null	(revision b6a7f57a3b604da4ba41b2f485955986eb05b2de)
+@@ -1,26 +0,0 @@
+-phrase = input("Phrase : ")
+-# On enlève ales espaces
+-phrase = phrase.replace(" ", "")
+-# on construit le dictionnaire
+-frequences = {}
+-for lettre in phrase:
+-    frequences[lettre] = frequences.get(lettre, 0) + 1
+-print(frequences)
+-
+-lettre_max = None
+-for lettre, freq in frequences.items():
+-    if lettre_max is None:
+-        lettre_max = lettre
+-    else:
+-        if frequences[lettre_max] < frequences[lettre]:
+-            lettre_max = lettre
+-
+-# Autre façon en une ligne, key= spécifie la fonction à appeler pour comparer
+-# lettre_max = max(frequences, key=frequences.get)
+-
+-print(f"Lettre la plus fréquente : {lettre_max} ({frequences[lettre_max]} fois)")
+-
+-
+-
+-
+-
+Index: Semaine 11/Exercices/ex_3_3.py
+===================================================================
+diff --git a/Semaine 11/Exercices/ex_3_3.py b/Semaine 11/Exercices/ex_3_3.py
+deleted file mode 100644
+--- a/Semaine 11/Exercices/ex_3_3.py	(revision b6a7f57a3b604da4ba41b2f485955986eb05b2de)
++++ /dev/null	(revision b6a7f57a3b604da4ba41b2f485955986eb05b2de)
+@@ -1,31 +0,0 @@
+-boutique = {'épée': 150, 'potion': 25, 'bouclier': 90, 'corde': 10}
+-
+-
+-
+-panier = []
+-while True:
+-
+-    item = input("Article : ")
+-
+-    if item == "fin":
+-        # Le code avant le break pourrait être à l'extérieur de la boucle
+-        total = 0
+-        for i in panier:
+-            total += boutique[i]
+-        print(f"Panier : {panier} Total : {total} pièces d'or")
+-        break
+-
+-    if item in boutique:
+-        panier.append(item)
+-    else:
+-        print("Le marchand n'a pas ça !")
+-
+-
+-
+-# item = input("Article : ")
+-#
+-# while item != "fin":
+-#
+-#     # logique ici
+-#
+-#     item = input("Article : ")
+\ No newline at end of file
+Index: Semaine 11/Exercices/ex_1_4.py
+===================================================================
+diff --git a/Semaine 11/Exercices/ex_1_4.py b/Semaine 11/Exercices/ex_1_4.py
+deleted file mode 100644
+--- a/Semaine 11/Exercices/ex_1_4.py	(revision b6a7f57a3b604da4ba41b2f485955986eb05b2de)
++++ /dev/null	(revision b6a7f57a3b604da4ba41b2f485955986eb05b2de)
+@@ -1,6 +0,0 @@
+-phrase = input("Phrase : ")
+-phrase = phrase.lower()
+-# Pour enlever les espace, on remplace les espaces par un caractère vide ""
+-phrase = phrase.replace(" ", "")
+-if phrase == phrase[::-1]:
+-    print("Palindrome magique !")
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"fe1cc5b7-891a-40be-8b1a-e49e8a4f68df\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/420-SF1-RE-A26.iml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/420-SF1-RE-A26.iml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Semaine 11/Exercices/ex_1_2.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Semaine 11/Exercices/ex_1_2.py\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Python Script\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;MamiChou0&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/MamiChou0/420-SF1-RE-A26.git&quot;,\r\n    &quot;accountId&quot;: &quot;fd2efb46-edfb-4d0f-8791-7e4aa25157ae&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 3,\r\n  &quot;fromUser&quot;: false\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"3J2wZdL8TkVVznPVaFbnTncjXtM\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <OptionsSetting value=\"false\" id=\"Update\" />\r\n    <ConfirmationsSetting value=\"1\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\r\n    \"Python tests.Python tests for test_exercices.Partie1.executor\": \"Run\",\r\n    \"Python tests.Python tests in test_exercices.py.executor\": \"Run\",\r\n    \"Python.Ex1.executor\": \"Run\",\r\n    \"Python.Ex2.executor\": \"Run\",\r\n    \"Python.Ex3.executor\": \"Run\",\r\n    \"Python.conditions_if_else.executor\": \"Debug\",\r\n    \"Python.ex_1_1.executor\": \"Run\",\r\n    \"Python.ex_1_2.executor\": \"Run\",\r\n    \"Python.ex_1_3.executor\": \"Run\",\r\n    \"Python.exemple.executor\": \"Run\",\r\n    \"Python.test.executor\": \"Run\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.git.unshallow\": \"true\",\r\n    \"RunOnceActivity.typescript.service.memoryLimit.init\": \"true\",\r\n    \"codeWithMe.voiceChat.enabledByDefault\": \"false\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"node.js.detected.package.jshint\": \"true\",\r\n    \"node.js.selected.package.jshint\": \"\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"python.packages.toolwindow.project.migrated.to.right.top.v2\": \"true\",\r\n    \"settings.editor.selected.configurable\": \"Errors\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Python tests for test_exercices.Partie1\" type=\"tests\" factoryName=\"Autodetect\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"420-SF1-RE-A26\" />\r\n      <option name=\"ENV_FILES\" value=\"\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"DEBUG_JUST_MY_CODE\" value=\"false\" />\r\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\r\n      <option name=\"RUN_TOOL\" value=\"\" />\r\n      <option name=\"_new_additionalArguments\" value=\"&quot;&quot;\" />\r\n      <option name=\"_new_target\" value=\"&quot;test_exercices.Partie1&quot;\" />\r\n      <option name=\"_new_targetType\" value=\"&quot;PYTHON&quot;\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Python tests.Python tests for test_exercices.Partie1\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-PY-262.10968.92\" />\r\n        <option value=\"bundled-python-sdk-73a66231627c-5bd6d13a2a75-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-262.10968.92\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"fe1cc5b7-891a-40be-8b1a-e49e8a4f68df\" name=\"Changes\" comment=\"\" />\r\n      <created>1788872528333</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1788872528333</updated>\r\n      <workItem from=\"1788882773078\" duration=\"3329000\" />\r\n      <workItem from=\"1790686685414\" duration=\"518000\" />\r\n      <workItem from=\"1790687217401\" duration=\"1356000\" />\r\n      <workItem from=\"1790688702241\" duration=\"3191000\" />\r\n      <workItem from=\"1790692528948\" duration=\"621000\" />\r\n      <workItem from=\"1790693911499\" duration=\"3094000\" />\r\n      <workItem from=\"1790697875679\" duration=\"467000\" />\r\n      <workItem from=\"1790698355051\" duration=\"4258000\" />\r\n      <workItem from=\"1794924201527\" duration=\"11191000\" />\r\n      <workItem from=\"1795030883691\" duration=\"1918000\" />\r\n      <workItem from=\"1795064075659\" duration=\"2474000\" />\r\n      <workItem from=\"1795229453746\" duration=\"2960000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" suspend=\"THREAD\" type=\"python-line\">\r\n          <url>file://$PROJECT_DIR$/Semaine 3/Exemples/conditions_if_else.py</url>\r\n          <line>5</line>\r\n          <option name=\"timeStamp\" value=\"3\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/420_SF1_RE_A26$ex_1_2.coverage\" NAME=\"ex_1_2 Coverage Results\" MODIFIED=\"1795229499857\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$/Semaine 11/Exercices\" />\r\n    <SUITE FILE_PATH=\"coverage/420_SF1_RE_A26$Ex1.coverage\" NAME=\"Ex1 Coverage Results\" MODIFIED=\"1790700798979\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$/Semaine 6\" />\r\n    <SUITE FILE_PATH=\"coverage/420_SF1_RE_A26$Ex3.coverage\" NAME=\"Ex3 Coverage Results\" MODIFIED=\"1790702452735\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$/Semaine 6\" />\r\n    <SUITE FILE_PATH=\"coverage/420_SF1_RE_A26$.coverage\" NAME=\" Coverage Results\" MODIFIED=\"1795030995608\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$\" />\r\n    <SUITE FILE_PATH=\"coverage/420_SF1_RE_A26$Ex2.coverage\" NAME=\"Ex2 Coverage Results\" MODIFIED=\"1790701003976\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$/Semaine 6\" />\r\n    <SUITE FILE_PATH=\"coverage/420_SF1_RE_A26$exemple.coverage\" NAME=\"exemple Coverage Results\" MODIFIED=\"1790695844333\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$/Semaine 6\" />\r\n    <SUITE FILE_PATH=\"coverage/420_SF1_RE_A26$ex_1_1.coverage\" NAME=\"ex_1_1 Coverage Results\" MODIFIED=\"1794938080076\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$/Semaine 11/Exercices\" />\r\n    <SUITE FILE_PATH=\"coverage/420_SF1_RE_A26$test.coverage\" NAME=\"test Coverage Results\" MODIFIED=\"1794936311101\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$\" />\r\n    <SUITE FILE_PATH=\"coverage/420_SF1_RE_A26$ex_1_3.coverage\" NAME=\"ex_1_3 Coverage Results\" MODIFIED=\"1795232142170\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$/Semaine 11/Exercices\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision b6a7f57a3b604da4ba41b2f485955986eb05b2de)
++++ b/.idea/workspace.xml	(date 1795530608423)
+@@ -5,9 +5,15 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="fe1cc5b7-891a-40be-8b1a-e49e8a4f68df" name="Changes" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/420-SF1-RE-A26.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/420-SF1-RE-A26.iml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Semaine 11/Exercices/ex_1_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Semaine 11/Exercices/ex_1_2.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Semaine 11/Exercices/ex_1_4.py" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/Semaine 11/Exercices/ex_1_5.py" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/Semaine 11/Exercices/ex_3_1.py" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/Semaine 11/Exercices/ex_3_2.py" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/Semaine 11/Exercices/ex_3_3.py" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/Semaine 11/Exercices/ex_3_4.py" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/Semaine 11/Exercices/ex_3_5.py" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -52,33 +58,37 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "ModuleVcsDetector.initialDetectionPerformed": "true",
+-    "Python tests.Python tests for test_exercices.Partie1.executor": "Run",
+-    "Python tests.Python tests in test_exercices.py.executor": "Run",
+-    "Python.Ex1.executor": "Run",
+-    "Python.Ex2.executor": "Run",
+-    "Python.Ex3.executor": "Run",
+-    "Python.conditions_if_else.executor": "Debug",
+-    "Python.ex_1_1.executor": "Run",
+-    "Python.ex_1_2.executor": "Run",
+-    "Python.ex_1_3.executor": "Run",
+-    "Python.exemple.executor": "Run",
+-    "Python.test.executor": "Run",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "RunOnceActivity.git.unshallow": "true",
+-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+-    "codeWithMe.voiceChat.enabledByDefault": "false",
+-    "git-widget-placeholder": "main",
+-    "node.js.detected.package.jshint": "true",
+-    "node.js.selected.package.jshint": "",
+-    "nodejs_package_manager_path": "npm",
+-    "python.packages.toolwindow.project.migrated.to.right.top.v2": "true",
+-    "settings.editor.selected.configurable": "Errors",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
++    &quot;Python tests.Python tests for test_exercices.Partie1.executor&quot;: &quot;Run&quot;,
++    &quot;Python tests.Python tests in test_exercices.py.executor&quot;: &quot;Run&quot;,
++    &quot;Python.Ex1.executor&quot;: &quot;Run&quot;,
++    &quot;Python.Ex2.executor&quot;: &quot;Run&quot;,
++    &quot;Python.Ex3.executor&quot;: &quot;Run&quot;,
++    &quot;Python.conditions_if_else.executor&quot;: &quot;Debug&quot;,
++    &quot;Python.ex_1_1.executor&quot;: &quot;Run&quot;,
++    &quot;Python.ex_1_2.executor&quot;: &quot;Run&quot;,
++    &quot;Python.ex_1_3.executor&quot;: &quot;Run&quot;,
++    &quot;Python.exemple.executor&quot;: &quot;Run&quot;,
++    &quot;Python.test.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
++    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;python.packages.toolwindow.project.migrated.to.right.top.v2&quot;: &quot;true&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RunManager">
+     <configuration name="Python tests for test_exercices.Partie1" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+       <module name="420-SF1-RE-A26" />
+@@ -90,9 +100,9 @@
+       <option name="IS_MODULE_SDK" value="true" />
+       <option name="ADD_CONTENT_ROOTS" value="true" />
+       <option name="ADD_SOURCE_ROOTS" value="true" />
+-      <option name="DEBUG_JUST_MY_CODE" value="false" />
+       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+       <option name="RUN_TOOL" value="" />
++      <option name="RUN_AS_SCRIPT" value="" />
+       <option name="_new_additionalArguments" value="&quot;&quot;" />
+       <option name="_new_target" value="&quot;test_exercices.Partie1&quot;" />
+       <option name="_new_targetType" value="&quot;PYTHON&quot;" />

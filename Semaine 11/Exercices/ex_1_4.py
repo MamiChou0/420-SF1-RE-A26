@@ -1,6 +1,6 @@
-phrase = input("Phrase : ")
-phrase = phrase.lower()
-# Pour enlever les espace, on remplace les espaces par un caractère vide ""
-phrase = phrase.replace(" ", "")
-if phrase == phrase[::-1]:
-    print("Palindrome magique !")
+phrase = input('Phrase : ').replace(' ', '').lower()
+phrase_inverse = phrase[::-1]
+if phrase_inverse == phrase:
+    print('Palindrome magique !')
+else:
+    print('Pas un palindrome')
